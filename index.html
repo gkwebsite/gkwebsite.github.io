@@ -154,17 +154,6 @@ var z7hh0wr1lnrb31;(function(d, t) {
 			<script>
 				impress().init();
 
-				//Galleria.loadTheme('galleria/themes/azure/galleria.azur.min.js');
-				//Galleria.loadTheme('galleria/themes/classicmod/galleria.classicmod.js');
-				//Galleria.run('.galleria');
-				Galleria.run('.galleria',{ trueFullscreen: true});
-
-				$('.galleria').galleria({ 
-					flickr: 'user:124608923@N03',
-					width: 898, 
-					height: 698, 
-					transition: 'fade' 
-					});
 
 
             $(document).ready(function() {
@@ -191,7 +180,19 @@ var z7hh0wr1lnrb31;(function(d, t) {
   							$('.content').fadeOut("fast");
                 });
 
-				
+								//Galleria.loadTheme('galleria/themes/azure/galleria.azur.min.js');
+				//Galleria.loadTheme('galleria/themes/classicmod/galleria.classicmod.js');
+				//Galleria.run('.galleria');
+				Galleria.run('.galleria',{ trueFullscreen: true});
+
+				$('.galleria').galleria({ 
+					flickr: 'user:124608923@N03',
+					width: 898, 
+					height: 698, 
+					transition: 'fade' 
+					});
+
+
 				$('.close').on('click', function(e){ 
 						console.log('close');
 					impress().goto('home');
