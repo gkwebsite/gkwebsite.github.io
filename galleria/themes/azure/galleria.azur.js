@@ -46,6 +46,11 @@
                     });
                     return
                 }
+				
+			// 	closebtn = d.createElement("i")
+			// closebtn.className = 'fa fa-minus-square-o close';
+			// console.log(closebtn);
+
                 var e = 24,
                     g = d.createElement("canvas"),
                     h = g.getContext("2d"),

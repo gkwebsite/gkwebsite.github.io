@@ -25,7 +25,7 @@ time, mark, audio, video {
 	margin-top:20px;
 	margin-right:20px;
 	font-size: 3em;
-	color: black;
+	color: red;
 	z-index: 999;
 }
 
@@ -51,6 +51,30 @@ q:before, q:after {
     content: none;
 }
 
+#mainnav {
+	width:100%;
+	height:40px;
+	background:#000;
+	opacity: .8;
+	z-index: 9999;
+}
+
+.navbtn {
+	color: white;
+	float: left;
+	width: 60px;
+	padding: 10px;
+	text-align: center;
+	pointer-events: auto;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+a:hover {
+	font-weight:bold;
+}
 /* .content{display:none} */
 .d {
 	font-size: 1.5em;
@@ -109,12 +133,13 @@ body {
 
 #logo-container {
 	width:550px;
-	height: 550px;
+	height: 500px;
   margin: auto;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
   opacity: 1;
   z-index: 10;
+   /* margin-top:20px; */
 }
 #logo {
 	width:550px;
@@ -185,8 +210,7 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, .5);
 
-    color: #000;//rgb(102, 102, 102);
-    /*text-shadow: 0 2px 2px rgba(0, 0, 0, .1);*/
+    color: #000;
 
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 30px;
@@ -252,6 +276,5 @@ body {
     transition:         opacity 1s 5s,         transform 0.5s 4.5s;
 }
 .impress-enabled          { pointer-events: none }
-.impress-enabled #impress { pointer-events: auto }
-
+.impress-enabled #impress { pointer-events: auto; 	margin-top:20px;}
 
