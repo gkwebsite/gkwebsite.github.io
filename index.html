@@ -16,11 +16,11 @@
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 		<script type="text/javascript" src="galleria/galleria-1.3.5.js"></script> 
-		<!-- <link type="text/css" rel="stylesheet" href="galleria/themes/classicmod/galleria.classicmod.css"> -->
-		<!-- <script type="text/javascript" src="galleria/themes/classicmod/galleria.classicmod.js"></script> -->
-		
-		<link type="text/css" rel="stylesheet" href="galleria/themes/azure/galleria.azur.css">
-		<script type="text/javascript" src="galleria/themes/azure/galleria.azur.js"></script>
+		<link type="text/css" rel="stylesheet" href="galleria/themes/classic/galleria.classic.css">
+		<script type="text/javascript" src="galleria/themes/classic/galleria.classic.js"></script>
+
+		<!-- <link type="text/css" rel="stylesheet" href="galleria/themes/azure/galleria.azur.css"> -->
+		<!-- <script type="text/javascript" src="galleria/themes/azure/galleria.azur.js"></script> -->
 		
 		<script src="galleria/plugins/flickr/galleria.flickr.js"></script>
 		
@@ -32,14 +32,19 @@
 
 
 	<body class="impress-not-supported">
-					<i class="fa fa-minus-square-o close"></i>
 		<div class="fallback-message">
 			<p>Sorry, your browser is not supported.</p>
 		</div>
 
+		<div id='mainnav' >
+			<div class='navbtn' ><a href='#home'>Home</a></div>
+			<div class='navbtn' ><a href='#about'>About</a></div>
+			<div class='navbtn' ><a href='#gallery'>Gallery</a></div>
+			<div class='navbtn' ><a href='#services'>Services</a></div>
+			<div class='navbtn' ><a href='#contact'>Contact</a></div>
+		</div>
 
 		<div id="impress">
-
 
 			<div id='home' class="step" data-z="1500" data-x="-500" data-y="-1000"> </div>
 
@@ -63,7 +68,6 @@
 				</div>
 
 			</div>
-
 
 
 
@@ -152,7 +156,6 @@ var z7hh0wr1lnrb31;(function(d, t) {
 
 			<script src="libs/impress.js"></script>
 			<script>
-				impress().init();
 
 
 
@@ -167,7 +170,7 @@ var z7hh0wr1lnrb31;(function(d, t) {
 						logo.css('z-index','1');
 					 	logo.animate({opacity: 1}, 500, function() {});                   
 					 } else {
-						$('.close').show();
+						// $('.close').show();
 						logo.animate({opacity: .2}, 500, function() {});  
 						logo.css('z-index','-1');
 						$('.content').fadeIn("slow" );
@@ -180,10 +183,8 @@ var z7hh0wr1lnrb31;(function(d, t) {
   							$('.content').fadeOut("fast");
                 });
 
-								//Galleria.loadTheme('galleria/themes/azure/galleria.azur.min.js');
-				//Galleria.loadTheme('galleria/themes/classicmod/galleria.classicmod.js');
 				//Galleria.run('.galleria');
-				Galleria.run('.galleria',{ trueFullscreen: true});
+				// Galleria.run('.galleria',{ trueFullscreen: true});
 
 				$('.galleria').galleria({ 
 					flickr: 'user:124608923@N03',
@@ -193,18 +194,10 @@ var z7hh0wr1lnrb31;(function(d, t) {
 					});
 
 
-				$('.close').on('click', function(e){ 
-						console.log('close');
-					impress().goto('home');
-					$('.close').hide();
-					e.stopPropagation();
-				});
-
 				for(i=1;i<=4;i++){
 					var d = $('#'+ i).parent();
 					var r = 'url("img/'+Math.ceil(Math.random() * 4)+'.png")'
 					d.css('background',r)
-					//d.fadeIn(1000)
 				}
 				setInterval(function(){
 					var d = $('#'+ Math.ceil(Math.random() * 4)).parent()
@@ -213,15 +206,16 @@ var z7hh0wr1lnrb31;(function(d, t) {
 					d.fadeIn(1000)
 				}, (Math.floor(Math.random() * 6) + 3) * 1000)
 
-            });
+            });					
 
-			 
 		   </script>
 
 		</div>
 
 		<div id='logo-container'><img id='logo' src='img/gklogolarge.png'/></div>
 
+		<script>impress().init(); </script>
+		
 		</body>
 	</html>
 
