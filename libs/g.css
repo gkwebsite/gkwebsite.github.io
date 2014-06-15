@@ -41,6 +41,7 @@ body {
 }
 ol, ul {
     list-style: none;
+	font-weight: bold;
 }
 blockquote, q {
     quotes: none;
