@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+<style>
+#loading {
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+#logo-container {
+	position: absolute;
+	top:0;
+	left:0;
+}
+#logo {
+	width:550px;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+
+<div id-'logo-container'><img id='logo' src='img/gklogo.png'></div>
+<div id='loading'></div>
+
+
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+var data = [{name: "one", value: 100}];
+
+var margin = {top: 10, right: 0, bottom: 0, left: 0};
+	width = 570 - margin.left - margin.right;
+	height = width - margin.top - margin.bottom;
+
+var chart = d3.select("#loading")
+	.append('svg')
+	.attr("width", width + margin.left + margin.right)
+	.attr("height", height + margin.top + margin.bottom)
+   	.append("g")
+	.attr("transform", 
+		"translate(" + ((width/2)+margin.left) + "," + ((height/2)+margin.top) + ")");
+
+
+var radius = Math.min(width, height) / 2;
+
+var arc = d3.svg.arc()
+    .outerRadius(radius)
+    .innerRadius(radius - 60);
+
+var pie = d3.layout.pie()
+    .sort(null)
+    .startAngle(3*Math.PI-.2)
+    .endAngle(Math.PI)
+    .value(function(d) { return d.value; });
+
+
+var g = chart.selectAll(".arc")
+  .data(pie(data))
+  .enter().append("g")
+  .attr("class", "arc");
+
+g.append("path")
+    .attr("d", arc)
+	.style("opacity", .8)
+    .attr("fill", "#fff")
+    .attr("transform", "rotate(-114)")
+
+
+g.append("path")
+    .attr("fill", "#fff")
+	.attr("transform", "rotate(-111)")
+  .transition()
+    .ease("exp")
+    //.ease("cubic")
+    .duration(5000)
+	.attrTween('d', function(d) {
+			var i = d3.interpolate(d.endAngle, d.startAngle);
+			return function(t) {
+				d.endAngle = i(t);
+				d3.select('text').remove();				
+				g.append("text")
+					.attr("x",55)
+					.attr("y",-100)
+					.attr("font-family", "Arial")
+					.style("font-size","24px")
+					.text(function(d) {
+						var p =  (t*100).toFixed()
+						if(p=='0') return 'Initializing...';
+						return 'Loading ' + p + '%';
+					});
+				return arc(d);
+				}
+		})
+		.each("end", function() {
+				d3.select("svg")
+				.transition()
+				.duration(500)
+				.style("opacity", 0)
+				.remove();
+			});
+
+
+chart.append("rect")
+		.attr("x", -100)
+		.attr("y", 135)
+		.attr("width", 23)
+		.attr("height", 98)
+    	.attr("fill", "#000");
+chart.append("polygon")     	
+	.attr("fill", "#000")
+	.attr("points", "-26,200, -2,200, 8,233, -16,233");  
+
+
+chart.append("rect")
+		.attr("x", 0)
+		.attr("y", -91)
+		.attr("width", 204)
+		.attr("height", 7)
+    	.attr("fill", "#000");
+
+chart.append("rect")
+		.attr("x", 0)
+		.attr("y", -120)
+		.attr("width", 204)
+		.attr("height", 70)
+		.style("opacity", .8)
+    	.attr("fill", "#fff");
+
+chart.append("rect")
+		.attr("x", -250)
+		.attr("y", 80)
+		.attr("fill", "#fff")
+		.attr("transform", "rotate(180)")
+		.attr("width", 250)
+		.attr("height", 15)
+		.transition()
+		.duration(800)
+		.attr('width',0);
+
+</script>
+
+
+</body>
+</html>
